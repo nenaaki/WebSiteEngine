@@ -1,9 +1,0 @@
-E:\Repos\WebSiteEngine\Shared\bin\Debug\netstandard2.1\WebSiteEngine.Shared.deps.json
-E:\Repos\WebSiteEngine\Shared\bin\Debug\netstandard2.1\WebSiteEngine.Shared.dll
-E:\Repos\WebSiteEngine\Shared\bin\Debug\netstandard2.1\WebSiteEngine.Shared.pdb
-E:\Repos\WebSiteEngine\Shared\obj\Debug\netstandard2.1\WebSiteEngine.Shared.csprojAssemblyReference.cache
-E:\Repos\WebSiteEngine\Shared\obj\Debug\netstandard2.1\WebSiteEngine.Shared.AssemblyInfoInputs.cache
-E:\Repos\WebSiteEngine\Shared\obj\Debug\netstandard2.1\WebSiteEngine.Shared.AssemblyInfo.cs
-E:\Repos\WebSiteEngine\Shared\obj\Debug\netstandard2.1\WebSiteEngine.Shared.csproj.CoreCompileInputs.cache
-E:\Repos\WebSiteEngine\Shared\obj\Debug\netstandard2.1\WebSiteEngine.Shared.dll
-E:\Repos\WebSiteEngine\Shared\obj\Debug\netstandard2.1\WebSiteEngine.Shared.pdb
