@@ -15,15 +15,15 @@ Welcome to your new app.
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        using (Canvas2DContext _context = await _canvasReference.CreateCanvas2DAsync())
+        using (Canvas2DContext context = await _canvasReference.CreateCanvas2DAsync())
         {
-            await _context.SetFillStyleAsync("green");
-            await _context.SetLineWidthAsync(2.0f);
+            await context.SetFillStyleAsync("green");
+            await context.SetLineWidthAsync(2.0f);
 
-            await _context.FillRectAsync(10, 100, 100, 100);
+            await context.FillRectAsync(10, 100, 100, 100);
 
-            await _context.SetFontAsync("48px serif");
-            await _context.StrokeTextAsync("Hello Canvas!!!", 10, 100);
+            await context.SetFontAsync("48px serif");
+            await context.StrokeTextAsync("Hello Canvas!!!", 10, 100);
         }
     }
 }
