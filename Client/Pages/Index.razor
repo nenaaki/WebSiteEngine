@@ -1,29 +1,45 @@
 ﻿@page "/"
-@using Blazor.Extensions.Canvas.Canvas2D;
-@using Blazor.Extensions;
+@page "/{text}"
+@using WebSiteEngine.Shared
+@inject HttpClient Http
 
-<h1>Hello, world!</h1>
+<p>@Text</p>
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
-
-<BECanvas Width="300" Height="400" @ref="_canvasReference"></BECanvas>
-
-@code{
-    protected BECanvasComponent _canvasReference;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+@foreach (var line in Textiles)
+{
+    if (line.StartsWith(TextileDocument.Tags.H1))
     {
-        using (Canvas2DContext context = await _canvasReference.CreateCanvas2DAsync())
-        {
-            await context.SetFillStyleAsync("green");
-            await context.SetLineWidthAsync(2.0f);
+        <h1><span class="container badge badge-dark text-left">@line.Substring(TextileDocument.Tags.H1.Length)</span></h1>
+    }
+    else if (line.StartsWith(TextileDocument.Tags.H2))
+    {
+        <h2><span class="container badge badge-dark text-left">@line.Substring(TextileDocument.Tags.H2.Length)</span></h2>
+    }
+    else if (line.StartsWith(TextileDocument.Tags.H3))
+    {
+        <h3><span class="container badge badge-dark text-left">@line.Substring(TextileDocument.Tags.H3.Length)</span></h3>
+    }
+    else
+    {
+        <p>@line</p>
+    }
+}
 
-            await context.FillRectAsync(10, 100, 100, 100);
 
-            await context.SetFontAsync("48px serif");
-            await context.StrokeTextAsync("Hello Canvas!!!", 10, 100);
-        }
+@code
+{
+    [Parameter]
+    public string Text { get; set; }
+
+    private string Path => (string.IsNullOrEmpty(Text) ? "default" : Text) + ".txt";
+
+    private string[] Textiles { get; set; } = Enumerable.Empty<string>() as string[];
+
+    protected override async Task OnInitializedAsync()
+    {
+        var textile = await Http.GetFromJsonAsync<TextileDocument>($"api/TextileDocument/{Path}");
+
+        Textiles = textile.Body.Trim('\r').Split("\n");
     }
 }

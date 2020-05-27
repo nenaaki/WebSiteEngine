@@ -1,0 +1,37 @@
+﻿@page "/canvas"
+@using Blazor.Extensions.Canvas.Canvas2D;
+@using Blazor.Extensions;
+
+<h3>Canvas</h3>
+
+<div @onmousemove="@OnMouseMove">
+    <BECanvas Width="300" Height="400" @ref="_canvasReference"></BECanvas>
+</div>
+
+<p>( @_x, @_y )</p>
+
+@code{
+    protected BECanvasComponent _canvasReference;
+    private double _x;
+    private double _y;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        using (Canvas2DContext context = await _canvasReference.CreateCanvas2DAsync())
+        {
+            await context.SetFillStyleAsync("green");
+            await context.SetLineWidthAsync(2.0f);
+
+            await context.FillRectAsync(10, 100, 100, 100);
+
+            await context.SetFontAsync("48px serif");
+            await context.StrokeTextAsync("Hello Canvas!!!", 10, 100);
+        }
+    }
+
+    private void OnMouseMove(MouseEventArgs args)
+    {
+        _x = args.ClientX;
+        _y = args.ClientY;
+    }
+}
