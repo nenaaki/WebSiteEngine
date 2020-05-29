@@ -1,0 +1,27 @@
+﻿@namespace WebSiteEngine.Client.Components
+
+    <!-- TODO : このダサいswitch文を外す -->
+    @switch (Depth)
+    {
+        case 1:
+            <h1><span class="container badge badge-dark text-left">@ChildContent</span></h1>
+            break;
+        case 2:
+            <h2><span class="container badge badge-dark text-left">@ChildContent</span></h2>
+            break;
+        case 3:
+            <h3><span class="container badge badge-dark text-left">@ChildContent</span></h3>
+            break;
+        case 4:
+            <h4><span class="container badge badge-dark text-left">@ChildContent</span></h4>
+            break;
+    }
+
+    @code {
+
+        [Parameter]
+        public int Depth { get; set; }
+
+        [Parameter]
+        public RenderFragment ChildContent { get; set; }
+    }

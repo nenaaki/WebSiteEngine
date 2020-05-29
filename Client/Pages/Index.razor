@@ -1,6 +1,7 @@
 ﻿@page "/"
 @page "/{text}"
 @using WebSiteEngine.Shared
+@using WebSiteEngine.Client.Components 
 @inject HttpClient Http
 
 <p>@Text</p>
@@ -10,15 +11,15 @@
 {
     if (line.StartsWith(TextileDocument.Tags.H1))
     {
-        <h1><span class="container badge badge-dark text-left">@line.Substring(TextileDocument.Tags.H1.Length)</span></h1>
+        <Headline Depth="1">@line.Substring(TextileDocument.Tags.H1.Length)</Headline>
     }
     else if (line.StartsWith(TextileDocument.Tags.H2))
     {
-        <h2><span class="container badge badge-dark text-left">@line.Substring(TextileDocument.Tags.H2.Length)</span></h2>
+        <Headline Depth="2">@line.Substring(TextileDocument.Tags.H2.Length)</Headline>
     }
     else if (line.StartsWith(TextileDocument.Tags.H3))
     {
-        <h3><span class="container badge badge-dark text-left">@line.Substring(TextileDocument.Tags.H3.Length)</span></h3>
+        <Headline Depth="3">@line.Substring(TextileDocument.Tags.H3.Length)</Headline>
     }
     else
     {
