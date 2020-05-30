@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 namespace WebSiteEngine.Server
 {
@@ -21,6 +22,7 @@ namespace WebSiteEngine.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHeadElementHelper();
             services.AddSignalR();
             services.AddControllersWithViews();
             services.AddRazorPages();

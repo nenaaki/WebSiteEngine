@@ -8,3 +8,7 @@ Blazor WebAssembly を用いて WebSite を作るためのシステムを作り�
 dotnet restore
 ```
 を一度実行します。
+
+## 動作させるために
+
+Server下に local ファルダーを作成し、中に default.txt を配置します。
